@@ -31,8 +31,6 @@ endforeach()
 #add_definitions(-pg)
 #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 
-include_directories(../include)
-
 add_library(libvata STATIC
 	aut_base.cc
 	bdd_bu_tree_aut.cc
@@ -87,6 +85,8 @@ add_library(libvata STATIC
 	sym_var_asgn.cc
 	symbolic_tree_aut_base_core.cc
 )
+
+target_include_directories(libvata PUBLIC ../include)
 
 set_target_properties(libvata PROPERTIES
   OUTPUT_NAME vata
