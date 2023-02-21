@@ -31,11 +31,11 @@ static std::string trim(const std::string& str)
 
 	// trim from start
 	result.erase(result.begin(), std::find_if(result.begin(), result.end(),
-		std::not1(std::ptr_fun<int, int>(std::isspace))));
+		[](char c) { return !std::isspace(c); }));
 
 	// trim from end
 	result.erase(std::find_if(result.rbegin(), result.rend(),
-		std::not1(std::ptr_fun<int, int>(std::isspace))).base(), result.end());
+		[](char c) { return !std::isspace(c); }).base(), result.end());
 
 	return result;
 }
@@ -73,7 +73,7 @@ static std::vector<std::string> split_delim(
 static std::string read_word(std::string& str)
 {
 	std::string::iterator end(std::find_if(str.begin(), str.end(),
-		std::ptr_fun<int, int>(std::isspace)));
+		[](char c) { return std::isspace(c); }));
 	std::string result(str.begin(), end);
 
 	str.erase(str.begin(), end);
@@ -87,7 +87,7 @@ static std::string read_word(std::string& str)
  */
 static bool contains_whitespace(const std::string& str)
 {
-	return str.end() != std::find_if(str.begin(), str.end(), std::ptr_fun<int, int>(std::isspace));
+	return str.end() != std::find_if(str.begin(), str.end(), [](char c) { return std::isspace(c); });
 }
 
 

@@ -15,7 +15,6 @@ set(vata_cxx_compiler_flags
   -Wall
   -Wfloat-equal
   -fdiagnostics-show-option
-  -std=c++11
   -Wctor-dtor-privacy
   -Weffc++
   -fPIC

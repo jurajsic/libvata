@@ -38,13 +38,9 @@ option(DEBUG_INFO_FOR_RELEASE "build with debug info even in release builds" OFF
 # enable C++
 enable_language(CXX)
 
+set (CMAKE_CXX_STANDARD 17)
 set(REQUIRED_GCC_VERSION 4.8.0)
 set(GCC_ALTERNATIVES g++ g++-4.8)
-
-# get the git revision
-include(GetGitRevisionDescription)
-git_describe(GIT_DESCRIBE)
-get_git_head_revision(GIT_REFSPEC GIT_SHA1)
 
 if (NOT DEFINED CMAKE_CXX_COMPILER)
 	set(CMAKE_CXX_COMPILER ${DEFAULT_CXX_COMPILER})
